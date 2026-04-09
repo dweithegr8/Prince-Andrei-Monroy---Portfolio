@@ -34,7 +34,7 @@ body {
 @media (max-width: 1100px) {
     body {
         padding-left: 0;
-        padding-top: 60px;
+        padding-top: 70px; /* Increased from 60px for better spacing */
     }
 }
 
@@ -47,6 +47,19 @@ body {
     min-height: 100%;
     z-index: 0;
     pointer-events: none;
+}
+
+/* Reduce particle performance on mobile for better UX */
+@media (max-width: 768px) {
+    #particles-js {
+        opacity: 0.3; /* Reduce particle visibility on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    #particles-js {
+        opacity: 0.1; /* Further reduce on small mobile */
+    }
 }
 
 #particles-js canvas {
@@ -90,15 +103,17 @@ a {
         left: 0;
         width: 100%;
         height: auto;
-        max-height: 60px;
+        max-height: 70px; /* Increased from 60px */
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        padding: 10px 20px;
+        border-bottom: 2px solid var(--border-soft); /* Made border more visible */
+        padding: 12px 20px; /* Increased padding */
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.4s ease; /* Smoother transition */
+        background: linear-gradient(180deg, rgba(2,2,3,0.95) 0%, rgba(7,7,8,0.95) 100%); /* More opaque */
+        backdrop-filter: blur(10px); /* Stronger blur */
     }
 
     .sidebar.menu-open {
@@ -106,7 +121,8 @@ a {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        padding: 60px 20px 20px 20px;
+        padding: 70px 20px 30px 20px; /* Better spacing */
+        background: linear-gradient(180deg, rgba(2,2,3,0.98) 0%, rgba(7,7,8,0.98) 100%);
     }
 }
 
@@ -270,33 +286,40 @@ a {
 .menu-toggle {
     display: none;
     position: fixed;
-    top: 12px;
+    top: 15px; /* Adjusted position */
     right: 20px;
-    width: 36px;
-    height: 36px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border-soft);
-    border-radius: 8px;
+    width: 44px; /* Larger touch target */
+    height: 44px; /* Larger touch target */
+    background: rgba(255,255,255,0.08); /* More visible */
+    border: 2px solid var(--border-soft); /* Thicker border */
+    border-radius: 10px; /* More rounded */
     cursor: pointer;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 4px;
     z-index: 11;
-    transition: background 0.25s ease, border-color 0.25s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Added shadow */
 }
 
 .menu-toggle:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.4);
+    transform: scale(1.05); /* Subtle scale effect */
+}
+
+.menu-toggle:active {
+    transform: scale(0.95); /* Press effect */
 }
 
 .menu-toggle span {
-    width: 18px;
+    width: 20px; /* Slightly wider */
     height: 2px;
     background: var(--text);
     border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: all 0.3s ease;
+    transform-origin: center;
 }
 
 @media (max-width: 1100px) {
@@ -327,13 +350,19 @@ a {
 
 @media (max-width: 1100px) {
     .main-content {
-        padding: 20px 16px;
+        padding: 30px 20px; /* Better padding for tablets */
     }
 }
 
 @media (max-width: 768px) {
     .main-content {
-        padding: 16px 12px;
+        padding: 20px 16px; /* Comfortable padding for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 16px 12px; /* Minimal padding for small screens */
     }
 }
 
@@ -350,9 +379,17 @@ a {
     overflow: hidden;
 }
 
+@media (max-width: 1100px) {
+    .content-section {
+        padding: 32px 24px; /* Better for tablets */
+        border-radius: 20px;
+        margin-bottom: 28px;
+    }
+}
+
 @media (max-width: 768px) {
     .content-section {
-        padding: 28px 20px;
+        padding: 24px 18px; /* Comfortable for mobile */
         border-radius: 16px;
         margin-bottom: 24px;
     }
@@ -360,9 +397,9 @@ a {
 
 @media (max-width: 480px) {
     .content-section {
-        padding: 20px 16px;
+        padding: 20px 16px; /* Minimal for small screens */
         border-radius: 12px;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
     }
 }
 
@@ -388,6 +425,13 @@ a {
     margin-bottom: 16px;
 }
 
+@media (max-width: 1100px) {
+    .content-section h2 {
+        font-size: 2.1rem;
+        margin-bottom: 14px;
+    }
+}
+
 @media (max-width: 768px) {
     .content-section h2 {
         font-size: 1.8rem;
@@ -397,7 +441,7 @@ a {
 
 @media (max-width: 480px) {
     .content-section h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         margin-bottom: 10px;
     }
 }
@@ -406,6 +450,30 @@ a {
     color: var(--muted);
     max-width: 720px;
     margin: 0 auto 32px auto;
+    line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+    .section-description {
+        font-size: 1rem;
+        margin-bottom: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-description {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-description {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
 }
 
 .branding-contacts {
@@ -530,10 +598,23 @@ a {
     gap: 16px;
 }
 
+@media (max-width: 1100px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+}
+
 @media (max-width: 768px) {
     .skills-grid {
         grid-template-columns: 1fr;
         gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-grid {
+        gap: 10px;
     }
 }
 
@@ -547,6 +628,13 @@ a {
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+@media (max-width: 1100px) {
+    .skill-category {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
 @media (max-width: 768px) {
     .skill-category {
         padding: 14px;
@@ -557,6 +645,7 @@ a {
 @media (max-width: 480px) {
     .skill-category {
         padding: 12px;
+        border-radius: 10px;
     }
 }
 
@@ -605,10 +694,23 @@ a {
     place-items: center;
 }
 
+@media (max-width: 1100px) {
+    .achievements-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+}
+
 @media (max-width: 768px) {
     .achievements-grid {
         grid-template-columns: 1fr;
         gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievements-grid {
+        gap: 10px;
     }
 }
 
@@ -621,6 +723,14 @@ a {
     backdrop-filter: blur(6px);
     text-align: center;
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (max-width: 1100px) {
+    .project-card,
+    .achievement-card {
+        padding: 16px;
+        border-radius: 16px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -743,6 +853,19 @@ a {
     .project-card p,
     .achievement-card p {
         font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .branding-contacts {
+        grid-template-columns: 1fr;
+    }
+
+    .social-cluster {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -777,6 +900,11 @@ a {
     .project-card p,
     .achievement-card p {
         font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .branding-contacts {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -815,10 +943,15 @@ a {
     .project-card p,
     .achievement-card p {
         font-size: 0.8rem;
+        line-height: 1.5;
     }
 
     .icon-link {
         min-height: 72px;
         font-size: 1.8rem;
+    }
+
+    .branding-contacts {
+        grid-template-columns: 1fr;
     }
 }

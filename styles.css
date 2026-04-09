@@ -220,8 +220,30 @@ a {
 }
 
 @media (max-width: 768px) {
+    .sidebar-top {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        width: 100%;
+    }
+
     .sidebar-top h1 {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .sidebar-top p {
         display: none;
+    }
+
+    .sidebar-avatar {
+        width: 44px;
+        height: 44px;
     }
 }
 
